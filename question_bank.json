@@ -1,0 +1,194 @@
+[
+  {
+    "id": "stack_001",
+    "topic": "Stacks",
+    "concepts": ["LIFO", "push", "pop"],
+    "difficulty": "easy",
+    "question": "Explain the LIFO principle of a stack and describe what happens during push and pop operations.",
+    "expected_points": [
+      "LIFO stands for Last In, First Out: the last element added is the first one removed",
+      "Push adds an element to the top of the stack",
+      "Pop removes and returns the top element of the stack"
+    ],
+    "critical_misconceptions": [
+      "Stack operates on First In, First Out (FIFO)",
+      "Pop removes the oldest or bottom element",
+      "Elements can be added or removed from any arbitrary index in a standard stack"
+    ],
+    "hint": "Think of a physical stack of dinner plates or trays where you can only add or remove from the very top.",
+    "follow_up_ids": ["stack_002", "stack_003"],
+    "fallback_follow_up_id": "stack_002"
+  },
+  {
+    "id": "stack_002",
+    "topic": "Stacks",
+    "concepts": ["peek", "underflow", "overflow"],
+    "difficulty": "easy",
+    "question": "What is the purpose of the peek (or top) operation on a stack, and what error occurs if you try to pop from an empty stack?",
+    "expected_points": [
+      "Peek (or top) examines the value of the top element without removing it from the stack",
+      "Attempting to pop or peek from an empty stack causes stack underflow (an underflow error or exception)",
+      "Stack overflow occurs when attempting to push onto a fixed-size stack that has reached maximum capacity"
+    ],
+    "critical_misconceptions": [
+      "Peek modifies the stack by removing the top element",
+      "Popping an empty stack returns the last pushed item"
+    ],
+    "hint": "Consider whether looking at the top item should change the stack's size, and what happens when nothing is there to remove.",
+    "follow_up_ids": ["stack_003", "stack_004"],
+    "fallback_follow_up_id": "stack_001"
+  },
+  {
+    "id": "stack_003",
+    "topic": "Stacks",
+    "concepts": ["applications", "parenthesis_matching", "call_stack"],
+    "difficulty": "medium",
+    "question": "Describe two practical applications of stacks in computer systems or software development, and explain why a stack is the ideal data structure for them.",
+    "expected_points": [
+      "Function call stack / recursion management: tracks active function frames and return addresses in LIFO order",
+      "Balanced parentheses / syntax validation: pushes opening delimiters and pops to match closing delimiters",
+      "Undo/Redo mechanisms or expression evaluation / backtracking (e.g. DFS)"
+    ],
+    "critical_misconceptions": [
+      "Breadth-first search (BFS) uses a stack by default",
+      "The call stack operates as First In, First Out"
+    ],
+    "hint": "Think about how your programming language tracks active function calls or how a text editor undoes your most recent keystrokes.",
+    "follow_up_ids": ["stack_004", "stack_005"],
+    "fallback_follow_up_id": "stack_001"
+  },
+  {
+    "id": "stack_004",
+    "topic": "Stacks",
+    "concepts": ["time_complexity", "array_implementation", "linked_list_implementation"],
+    "difficulty": "medium",
+    "question": "What is the time complexity of the core stack operations (push, pop, peek), and how do array-based vs linked-list-based implementations differ?",
+    "expected_points": [
+      "Core operations (push, pop, peek) operate in O(1) constant time",
+      "Array-based implementation offers fast cache locality but may require O(n) dynamic resizing when capacity is reached",
+      "Linked-list-based implementation guarantees strict O(1) per operation without resizing, but incurs extra memory overhead for pointers"
+    ],
+    "critical_misconceptions": [
+      "Push or pop in a stack requires O(n) linear time because elements must shift",
+      "Array and linked list implementations have identical memory overhead"
+    ],
+    "hint": "Remember that all stack operations occur only at one end (the top), meaning no shifting of remaining elements is required.",
+    "follow_up_ids": ["stack_005", "queue_001"],
+    "fallback_follow_up_id": "stack_002"
+  },
+  {
+    "id": "stack_005",
+    "topic": "Stacks",
+    "concepts": ["monotonic_stack", "next_greater_element", "amortized_analysis"],
+    "difficulty": "hard",
+    "question": "What is a monotonic stack, and how does it achieve an overall O(n) time complexity for problems like finding the 'Next Greater Element' for all array items?",
+    "expected_points": [
+      "A monotonic stack maintains its elements in strictly increasing or decreasing order",
+      "When processing a new element, elements that violate the monotonic property are popped",
+      "Overall time complexity is O(n) because each element is pushed onto the stack at most once and popped at most once (amortized O(1) per element)"
+    ],
+    "critical_misconceptions": [
+      "A nested while-loop inside the traversal automatically makes the algorithm O(n^2)",
+      "A monotonic stack requires sorting the entire array first"
+    ],
+    "hint": "Consider the total life cycle of any single element: how many times can it enter and leave the stack across the whole array scan?",
+    "follow_up_ids": ["queue_001", "queue_005"],
+    "fallback_follow_up_id": "stack_004"
+  },
+  {
+    "id": "queue_001",
+    "topic": "Queues",
+    "concepts": ["FIFO", "enqueue", "dequeue"],
+    "difficulty": "easy",
+    "question": "Explain the FIFO principle of a queue and describe the primary operations: enqueue and dequeue.",
+    "expected_points": [
+      "FIFO stands for First In, First Out: the first element added is the first one to be removed",
+      "Enqueue adds an element to the rear (or tail/back) of the queue",
+      "Dequeue removes and returns the element from the front (or head) of the queue"
+    ],
+    "critical_misconceptions": [
+      "Queue operates on Last In, First Out (LIFO)",
+      "Enqueue and dequeue happen at the same end of the data structure"
+    ],
+    "hint": "Think of a checkout queue or ticket line: the person who arrives first gets served first.",
+    "follow_up_ids": ["queue_002", "queue_003"],
+    "fallback_follow_up_id": "queue_002"
+  },
+  {
+    "id": "queue_002",
+    "topic": "Queues",
+    "concepts": ["front_rear_pointers", "underflow", "empty_condition"],
+    "difficulty": "easy",
+    "question": "How do the front and rear pointers track elements in a queue, and what happens when you attempt to dequeue from an empty queue?",
+    "expected_points": [
+      "Front pointer indicates the position of the next element to be removed; rear pointer indicates where new elements are inserted",
+      "Queue is empty when front equals rear (or front exceeds rear, depending on convention/implementation)",
+      "Attempting to dequeue from an empty queue results in queue underflow (an error or exception)"
+    ],
+    "critical_misconceptions": [
+      "Rear pointer points to the next item to be removed",
+      "Dequeuing from an empty queue returns the front element from a previous session"
+    ],
+    "hint": "Track the indices: which pointer moves forward when an item arrives, and which moves when an item is served?",
+    "follow_up_ids": ["queue_003", "queue_004"],
+    "fallback_follow_up_id": "queue_001"
+  },
+  {
+    "id": "queue_003",
+    "topic": "Queues",
+    "concepts": ["circular_queue", "modulo_arithmetic", "wasted_space"],
+    "difficulty": "medium",
+    "question": "Why is a circular queue preferred over a linear array queue, and how does modulo arithmetic solve the problem of false overflow?",
+    "expected_points": [
+      "In a linear array queue, dequeuing leaves unused space at the front, causing 'false overflow' even when capacity remains",
+      "A circular queue wraps rear and front pointers back to index 0 using modulo arithmetic: (index + 1) % capacity",
+      "This reuses freed memory slots efficiently without shifting elements"
+    ],
+    "critical_misconceptions": [
+      "Linear queues automatically shift all elements on every dequeue without performance cost",
+      "Circular queues require a circular doubly linked list"
+    ],
+    "hint": "What happens when the rear pointer reaches the end of the array, but several items have already been dequeued from the front?",
+    "follow_up_ids": ["queue_004", "queue_005"],
+    "fallback_follow_up_id": "queue_002"
+  },
+  {
+    "id": "queue_004",
+    "topic": "Queues",
+    "concepts": ["applications", "BFS", "task_scheduling"],
+    "difficulty": "medium",
+    "question": "Discuss practical applications of queues in operating systems and algorithms, highlighting why FIFO ordering is essential.",
+    "expected_points": [
+      "Operating system CPU scheduling / print spooling / message buffers (ensures tasks are processed in fair order of arrival)",
+      "Breadth-First Search (BFS) in trees and graphs: explores all nodes level-by-level in the order they were discovered",
+      "Asynchronous request handling and rate limiting (producer-consumer pattern)"
+    ],
+    "critical_misconceptions": [
+      "Depth-First Search (DFS) relies on a queue",
+      "LIFO order is needed for fair printer job spooling"
+    ],
+    "hint": "Consider why level-by-level exploration in a tree requires visiting older discovered nodes before newer ones.",
+    "follow_up_ids": ["queue_005", "stack_001"],
+    "fallback_follow_up_id": "queue_001"
+  },
+  {
+    "id": "queue_005",
+    "topic": "Queues",
+    "concepts": ["queue_using_stacks", "amortized_complexity", "two_stacks"],
+    "difficulty": "hard",
+    "question": "Explain how to implement a FIFO queue using two LIFO stacks, and analyze the time complexity of the enqueue and dequeue operations.",
+    "expected_points": [
+      "Use two stacks: an input stack (in_stack) for enqueue and an output stack (out_stack) for dequeue",
+      "Enqueue pushes directly onto in_stack in O(1) time",
+      "Dequeue pops from out_stack; if out_stack is empty, transfer all elements from in_stack to out_stack (reversing their order) and pop",
+      "Each element is transferred at most once, giving an amortized time complexity of O(1) per dequeue"
+    ],
+    "critical_misconceptions": [
+      "Transferring elements back and forth on every single dequeue or enqueue is required",
+      "The worst-case O(n) transfer means the average/amortized performance is also O(n)"
+    ],
+    "hint": "Two negatives make a positive: reversing a reversed sequence restores the original FIFO order.",
+    "follow_up_ids": ["stack_005", "queue_003"],
+    "fallback_follow_up_id": "queue_003"
+  }
+]
